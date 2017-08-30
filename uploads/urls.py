@@ -19,5 +19,5 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.upload_view),
-
+    url(r'^create/$',views.create_post),
 ]

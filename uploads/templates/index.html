@@ -34,32 +34,8 @@
 
 <body>
 
-    <!-- Navigation -->
-    <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="container">
-            <a class="navbar-brand" href="#">ChairHeaters</a>
-            <div class="collapse navbar-collapse" id="navbarExample">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+<!-- Navigation -->
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse" id="nav"></nav>
     <!-- Page Content -->
     <div class="container">
 
@@ -68,10 +44,13 @@
             <!-- Blog Entries Column -->
             <div class="col-md-8">
 
-                <h1 class="my-4">Recent Uploads <small></small></h1>
+                <h1 class="my-4">Recent Uploads</h1>
 
-                <!-- Blog Post -->
-                <div class="card mb-4">
+                <ul id="list">
+                    
+                </ul>
+            
+              <!--  <div class="card mb-4">
                     <div class="card-block">
                         <h2 class="card-title">Post Title</h2>
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
@@ -82,8 +61,8 @@
                     </div>
                 </div>
 
-                <!-- Blog Post -->
-                <div class="card mb-4">
+                
+                 <div class="card mb-4">
                     <div class="card-block">
                         <h2 class="card-title">Post Title</h2>
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
@@ -94,8 +73,8 @@
                     </div>
                 </div>
 
-                <!-- Blog Post -->
-                <div class="card mb-4">
+                
+               <div class="card mb-4">
                     <div class="card-block">
                         <h2 class="card-title">Post Title</h2>
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
@@ -104,7 +83,7 @@
                     <div class="card-footer text-muted">
                         Posted on January 1, 2017 by <a href="#">Start Bootstrap</a>
                     </div>
-                </div>
+                </div>  -->
 
                 <!-- Pagination -->
                 <ul class="pagination justify-content-center mb-4">
@@ -149,6 +128,23 @@
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/tether/tether.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+   
+    <script type="text/javascript">
+    var title = [];
+    var username = [];
+    var desc = [];
+    var file = [];
+    {% for obj in object_list %}
+        //var object = "{{obj}}";
+        title.push("{{obj.title}}")
+        username.push("{{obj.username}}")
+        desc.push("{{obj.desc}}")
+    {% endfor %}
+    </script>
+    
+    <script type="text/javascript" src="{% static 'javascript/script.js' %}"></script>
+    <script type="text/javascript" src="{% static 'javascript/nav.js' %}"></script>
+
 
 </body>
 
