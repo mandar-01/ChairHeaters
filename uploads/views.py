@@ -16,7 +16,7 @@ def upload_view(request):
 	# 	i+=1
 	# return render(request,'index.html',context)
 	context = {"object_list" : queryset}
-	return render(request,'index.html',context)
+	return render(request,'base.html',context)
 
 def create_post(request):
 	form = PostForm(request.POST or None)
