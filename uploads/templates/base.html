@@ -30,6 +30,10 @@
     }
     </style>
     {% endblock head %}
+
+    {% block styles %}
+    {% endblock styles %}
+
 </head>
 
 <body>
@@ -43,7 +47,7 @@
             <a class="navbar-brand" href="#">ChairHeaters</a>
             <div class="collapse navbar-collapse" id="navbarExample">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="/uploads/">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
@@ -71,7 +75,17 @@
 
                 <h1 class="my-4">Recent Uploads</h1>
 
-                <ul id="list"></ul>
+                {% for obj in object_list %}
+                <div class="card mb-4">
+                    <div class="card-block">
+                        <h2 class="card-title">{{obj.title}}</h2>
+                        <p class="card-text">{{obj.description}}</p>
+                        <a href="/uploads/read_more/" class="btn btn-primary">Read More &rarr;</a>
+                    </div>
+                    <div class="card-footer text-muted">Posted on January 1, 2017 by {{obj.username}} <a href="#"></a>
+                    </div>
+                </div>
+                {% endfor %}
 
                 <!-- Pagination -->
                 <ul class="pagination justify-content-center mb-4">
@@ -113,7 +127,7 @@
         <!-- /.container -->
     </footer>
    
-    <script type="text/javascript">
+<!--     <script type="text/javascript">
     var title = [];
     var username = [];
     var desc = [];
@@ -124,17 +138,15 @@
         username.push("{{obj.username}}")
         desc.push("{{obj.desc}}")
     {% endfor %}
-    </script>
+    </script> -->
     
         <!-- Bootstrap core JavaScript -->
     {% block script %}
+    {% endblock script %}
+<!--     <script type="text/javascript" src="{% static 'javascript/script.js' %}"></script> -->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/tether/tether.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'javascript/script.js' %}"></script>
-    <!-- <script type="text/javascript" src="{% static 'javascript/nav.js' %}"></script> -->
-    {% endblock script %}
-
 
 
 </body>

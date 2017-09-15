@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css" rel="stylesheet"> </link>
+<style type="text/css">
+	#pad {
+		padding: 50px 0px 0px 0px;
+	}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="ui items">
+  <div class="item">
+    <div class="content">
+      <a class="header" id="pad"></a>
+        <div class="description">
+          <p id="desc"></p>
+        </div>
+    </div>
+  </div>
+</div>
+{%  endblock %}	
+
+{% block script %}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.js"</script>
+<script type="text/javascript">
+	document.getElementById('pad').value = "Title";
+</script>
+{% endblock %}

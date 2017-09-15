@@ -1,0 +1,34 @@
+
+1. (a) Give the advantages of DBMS over File Processing Systems.
+(b) What are the steps involved in Query Processing.
+(c) Explain Shadow Paging in brief.
+(d) Define Super Key and Candidate Key with an example. 
+
+2. (a) Discuss conflict serializability and view serializability with examples. 
+ (b) Describe the overall architecture of DBMS with suitable diagram.
+
+3. (a) Explain the following Relational Algebra Operations with example: 
+i. Natural Join iii. Project
+ii. Union iv. Select
+(b) Explain types of integrity constraints with example.
+
+4. (a) What is Normalization Explain INF, 2NF,3NFan BCNF giving examples. 
+ (b) Consider the following database schema. 
+Employeet employee name, street, city, date of Join) Works(employee name company name, salary)
+Company(company name, city)
+Manages(employee name, manager name)
+Solve the following queries using SQL.
+i. Give all employee of ABC Company a 25% rise. 
+ii. Find all employees who live in the same cities and on the same street as their
+                      manager.
+iii. Find all employees who join in the month of April. iv. Delete the Smith belonging to XYZ Company.
+
+5. (a) What is an attribute Discuss various types of attributes with examples.
+    (b) Explain Security and Authorization in DBMS,
+
+6. Write Short riotes on:
+(a) Total and Partial Participation
+ (b) Data Independence 
+(c) ACID Properties
+ (d) Aggregate Functions in SQL
+

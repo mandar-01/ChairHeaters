@@ -20,4 +20,5 @@ from . import views
 urlpatterns = [
     url(r'^$', views.upload_view),
     url(r'^create/$',views.create_post),
+    url(r'^read_more/$',views.read_more),
 ]

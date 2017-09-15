@@ -30,4 +30,7 @@ def create_post(request):
 	}
 	return render(request,'form.html',context)
 
+def read_more(request):
+	return render(request,'read_more.html',{})
+
 
