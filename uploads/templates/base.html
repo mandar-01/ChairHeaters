@@ -48,7 +48,7 @@
             <div class="collapse navbar-collapse" id="navbarExample">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/uploads/">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/uploads/list">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">About</a>
@@ -82,15 +82,19 @@
                         <p class="card-text">{{obj.description}}</p>
                         <a href="/uploads/read_more/" class="btn btn-primary">Read More &rarr;</a>
                     </div>
-                    <div class="card-footer text-muted">Posted on January 1, 2017 by {{obj.username}} <a href="#"></a>
+                    <div class="card-footer text-muted">Posted on {{obj.timestamp}} by {{obj.username}} <a href="#"></a>
                     </div>
                 </div>
                 {% endfor %}
 
                 <!-- Pagination -->
                 <ul class="pagination justify-content-center mb-4">
-                    <li class="page-item"><a class="page-link" href="#">&larr; Older</a></li>
-                    <li class="page-item disabled"><a class="page-link" href="#">Newer &rarr;</a></li>
+                    {% if object_list.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page={{ object_list.previous_page_number }}">&larr; Older</a></li>
+                    {% endif %}
+                    {% if object_list.has_next %}
+                    <li class="page-item disabled"><a class="page-link" href="?page={{ object_list.next_page_number }}">Newer &rarr;</a></li>
+                    {% endif %}
                 </ul>
 
             </div>
@@ -126,29 +130,13 @@
         </div>
         <!-- /.container -->
     </footer>
-   
-<!--     <script type="text/javascript">
-    var title = [];
-    var username = [];
-    var desc = [];
-    var file = [];
-    {% for obj in object_list %}
-        //var object = "{{obj}}";
-        title.push("{{obj.title}}")
-        username.push("{{obj.username}}")
-        desc.push("{{obj.desc}}")
-    {% endfor %}
-    </script> -->
-    
         <!-- Bootstrap core JavaScript -->
     {% block script %}
     {% endblock script %}
-<!--     <script type="text/javascript" src="{% static 'javascript/script.js' %}"></script> -->
+    
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/tether/tether.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
 
-
 </body>
-
 </html>

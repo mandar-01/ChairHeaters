@@ -15,19 +15,30 @@
                 <div class="card mb-4">
                 	<div class="card-block">
                 		<h2 class="card-title">{{obj.title}}</h2>
-                		<p class="card-text"></p>
+                		<p class="card-text">{{obj.description}}</p>
                 		<a href="/uploads/read_more/" class="btn btn-primary">Read More &rarr;</a>
                 	</div>
-                	<div class="card-footer text-muted">Posted on January 1, 2017 by {{obj.username}} <a href="#"></a>
+                	<div class="card-footer text-muted">Posted on {{obj.timestamp}} by {{obj.username}} <a href="#"></a>
                 	</div>
                 </div>
                 {% endfor %}
 
                 <!-- Pagination -->
-                <ul class="pagination justify-content-center mb-4">
-                    <li class="page-item"><a class="page-link" href="#">&larr; Older</a></li>
-                    <li class="page-item disabled"><a class="page-link" href="#">Newer &rarr;</a></li>
-                </ul>
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if object_list.has_previous %}
+                            <a href="?page={{ object_list.previous_page_number }}">previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
+                        </span>
+
+                        {% if object_list.has_next %}
+                            <a href="?page={{ object_list.next_page_number }}">next</a>
+                        {% endif %}
+                    </span>
+                </div>
 
             </div>
 
