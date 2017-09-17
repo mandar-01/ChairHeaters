@@ -12,7 +12,7 @@ def upload_view(request):
 def post_list(request):
 	queryset_list = upload.objects.all() # Get all database querysets
 	queryset = upload.objects.all()
-	paginator = Paginator(queryset_list, 2) # Show 2 contacts per page
+	paginator = Paginator(queryset_list, 4) # Show 2 contacts per page
 
 	page = request.GET.get('page')
 	try:

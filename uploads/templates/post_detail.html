@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-<h1>{{title}}</h1>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+<h1>{{title}}</h1>
+<p>{{instance.description}}</p>
+<!-- <a href="{{instance.docFile.url}}" download="filename">Download link</a> -->
+{% if instance.docFile %}
+'{{settings.MEDIA_ROOT}}' + '{{instance.docFile.url}}' 
+{% endif %}
+{% endblock %}

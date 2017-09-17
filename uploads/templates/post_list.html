@@ -16,7 +16,7 @@
                 	<div class="card-block">
                 		<h2 class="card-title">{{obj.title}}</h2>
                 		<p class="card-text">{{obj.description}}</p>
-                		<a href="/uploads/read_more/" class="btn btn-primary">Read More &rarr;</a>
+                		<a href="{{obj.get_absolute_url}}" class="btn btn-primary">Read More &rarr;</a>
                 	</div>
                 	<div class="card-footer text-muted">Posted on {{obj.timestamp}} by {{obj.username}} <a href="#"></a>
                 	</div>
