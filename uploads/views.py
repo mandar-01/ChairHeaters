@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from uploads.models import upload
 from django.http import HttpResponseRedirect
 from .forms import PostForm
@@ -32,7 +32,7 @@ def post_detail(request,id=None):
 	return render(request,"post_detail.html",context)
 
 def create_post(request):
-	form = PostForm(request.POST or None)
+	form = PostForm(request.POST or None,request.FILES or None)
 	if form.is_valid():
 		instance = form.save(commit=False)
 		instance.save()
@@ -41,6 +41,11 @@ def create_post(request):
 	  "form" : form
 	}
 	return render(request,'form.html',context)
+
+def delete_post(request,id=None):
+	instance = get_object_or_404(upload,id=id)
+	instance.delete()
+	return redirect('/uploads/list/')
 
 def update_post(request):
 	form = PostForm(request.POST or None)
@@ -52,6 +57,7 @@ def update_post(request):
 	  "form" : form
 	}
 	return render(request,'form.html',context)
+
 
 def read_more(request):
 	return render(request,'read_more.html',{})

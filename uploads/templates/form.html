@@ -15,7 +15,7 @@
 </head>
 
 {% block content %}
-<form method="post" action="">
+<form method="post" action="" enctype="multipart/form-data">
 {% csrf_token %}
 <div class="myform">
     <div class="form-group">
@@ -39,6 +39,7 @@
     </div>
 
     <input type="submit" value="Create post" class="btn btn-primary">
+    <!-- <a href="/uploads/list/" class="btn btn-primary">Create</a> -->
 </div>
 </form>
 {% endblock content %}

@@ -3,8 +3,10 @@
 {% block content %}
 <h1>{{title}}</h1>
 <p>{{instance.description}}</p>
-<!-- <a href="{{instance.docFile.url}}" download="filename">Download link</a> -->
+
 {% if instance.docFile %}
 '{{settings.MEDIA_ROOT}}' + '{{instance.docFile.url}}' 
 {% endif %}
+
+<a href="/uploads/{{instance.id}}/delete/">Delete Post</a>
 {% endblock %}

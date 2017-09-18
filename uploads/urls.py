@@ -19,8 +19,9 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.upload_view),
-    url(r'^list/$', views.post_list),
+    url(r'^list/$', views.post_list,name='list'),
     url(r'^(?P<id>\d+)/$', views.post_detail,name="detail"),
+    url(r'^(?P<id>\d+)/delete/$', views.delete_post),
     url(r'^create/$',views.create_post),
     url(r'^read_more/$',views.read_more),
 ]
