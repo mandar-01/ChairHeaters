@@ -8,6 +8,7 @@ from django.utils.text import slugify
 
 # Create your models here.
 class upload(models.Model):
+	user = models.ForeignKey(settings.AUTH_USER_MODEL,default=1)
 	username = models.CharField(max_length=100)
 	#slug = models.SlugField(unique=True)
 	title = models.CharField(max_length=100)
