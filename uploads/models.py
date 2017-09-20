@@ -8,12 +8,11 @@ from django.utils.text import slugify
 
 # Create your models here.
 class upload(models.Model):
-	user = models.ForeignKey(settings.AUTH_USER_MODEL,default=1)
 	username = models.CharField(max_length=100)
-	#slug = models.SlugField(unique=True)
+	user = models.ForeignKey(settings.AUTH_USER_MODEL,default=1)
 	title = models.CharField(max_length=100)
 	description = models.CharField(max_length=300,default=None)
-	docFile = models.FileField(default=None,blank=True)
+	docFile = models.FileField(default=None,blank=True,null=True)
 	timestamp = models.DateTimeField(auto_now=False,auto_now_add=True)
 
 	def __unicode__(self):

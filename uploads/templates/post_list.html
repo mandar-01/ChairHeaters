@@ -20,8 +20,6 @@
                 	</div>
                     {% if obj.user.get_full_name %}
                 	<div class="card-footer text-muted">Posted on {{obj.timestamp}} by {{obj.user.get_full_name}} <a href="#"></a></div>
-                    {% else %}
-                    <div class="card-footer text-muted">Posted on {{obj.timestamp}} by {{obj.username}} <a href="#"></a></div>
                     {% endif %}
                 </div>
                 {% endfor %}
