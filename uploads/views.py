@@ -3,6 +3,7 @@ from uploads.models import upload
 from django.http import HttpResponseRedirect,Http404
 from .forms import PostForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Q
 
 
 # Create your views here.
@@ -12,7 +13,17 @@ def upload_view(request):
 def post_list(request):
 	queryset_list = upload.objects.all() # Get all database querysets
 	queryset = upload.objects.all()
-	paginator = Paginator(queryset_list, 4) # Show 2 contacts per page
+
+	query = request.GET.get("q")
+	if query:
+		queryset_list = queryset_list.filter(
+			Q(title__icontains=query) |
+            Q(description__icontains=query) |
+            Q(user__first_name__icontains=query) |
+            Q(user__last_name__icontains=query)
+			).distinct()
+
+	paginator = Paginator(queryset_list, 1) # Show 2 contacts per page
 
 	page = request.GET.get('page')
 	try:
