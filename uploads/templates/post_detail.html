@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1>{{title}}</h1>
-<p>{{instance.description}}</p>
+<p class="content-markdown">{{instance.description}}</p>
 
 {% if instance.docFile %}
 '{{settings.MEDIA_ROOT}}' + '{{instance.docFile.url}}' 

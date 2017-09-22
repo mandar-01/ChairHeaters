@@ -11,7 +11,7 @@ def upload_view(request):
 	return render(request,'base.html',context)
 
 def post_list(request):
-	queryset_list = upload.objects.all() # Get all database querysets
+	queryset_list = upload.objects.filter(user=request.user) # Get all database querysets
 	queryset = upload.objects.all()
 
 	query = request.GET.get("q")
@@ -23,7 +23,7 @@ def post_list(request):
             Q(user__last_name__icontains=query)
 			).distinct()
 
-	paginator = Paginator(queryset_list, 1) # Show 2 contacts per page
+	paginator = Paginator(queryset_list, 2) # Show 2 contacts per page
 
 	page = request.GET.get('page')
 	try:
@@ -43,8 +43,8 @@ def post_detail(request,id=None):
 	return render(request,"post_detail.html",context)
 
 def create_post(request):
-	if not request.user.is_staff or not request.user.is_superuser:
-		raise Http404
+	# if not request.user.is_staff or not request.user.is_superuser:
+	# 	raise Http404
 	form = PostForm(request.POST or None,request.FILES or None)
 	if form.is_valid():
 		instance = form.save(commit=False)

@@ -12,6 +12,7 @@ class upload(models.Model):
 	user = models.ForeignKey(settings.AUTH_USER_MODEL,default=1)
 	title = models.CharField(max_length=100)
 	description = models.CharField(max_length=300,default=None)
+	#content = models.TextField(default=None,blank=True,null=True)
 	docFile = models.FileField(default=None,blank=True,null=True)
 	timestamp = models.DateTimeField(auto_now=False,auto_now_add=True)
 

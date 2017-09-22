@@ -26,8 +26,10 @@
                 		<p class="card-text">{{obj.description}}</p>
                 		<a href="{{obj.get_absolute_url}}" class="btn btn-primary">Read More &rarr;</a>
                 	</div>
-                    {% if obj.user.get_full_name %}
-                	<div class="card-footer text-muted">Posted on {{obj.timestamp}} by {{obj.user.get_full_name}} <a href="#"></a></div>
+                    {% if obj.user.username %}
+                	<div class="card-footer text-muted">Posted on {{obj.timestamp}} by {{obj.user.username}} <a href="#"></a></div>
+                    {% else %}
+                    <div class="card-footer text-muted">Posted on {{obj.timestamp}} by {{obj.username}} <a href="#"></a></div>
                     {% endif %}
                 </div>
                 {% endfor %}
@@ -73,7 +75,7 @@
                 <div class="card-block">
                     <form method="GET" action="">
                         <input type="text" name="q" placeholder="Search" value="{{request.GET.q}}">
-                        <input type="submit" value="submit">
+                        <input type="submit" value="Go!">
                     </form>
                 </div>
             </div>
