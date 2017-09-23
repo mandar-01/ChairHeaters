@@ -23,5 +23,5 @@ urlpatterns = [
     url(r'^(?P<id>\d+)/$', views.post_detail,name="detail"),
     url(r'^(?P<id>\d+)/delete/$', views.delete_post),
     url(r'^create/$',views.create_post),
-    url(r'^read_more/$',views.read_more),
+    url(r'^myposts/$',views.my_posts),
 ]

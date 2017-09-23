@@ -13,7 +13,7 @@ from django.views.decorators.csrf import csrf_protect
 @csrf_protect
 def login_view(request):
 	print(request.user.is_authenticated())
-	title = "login"
+	title = "Login"
 	form = UserLoginForm(request.POST or None)
 	if form.is_valid():
 		username = form.cleaned_data.get("username")
@@ -23,7 +23,7 @@ def login_view(request):
 		print(request.user.is_authenticated())
 		return redirect("/uploads/list/")
 
-	return render(request,"loginform.html",{"form":form,"title":title})
+	return render(request,"landing.html",{"form":form,"title":title})
 
 def register_view(request):
 	form = UserRegisterForm(request.POST or None)
@@ -41,7 +41,7 @@ def register_view(request):
 	"form":form,
 	"title":title
 	}
-	return render(request,"loginform.html",context)
+	return render(request,"landing.html",context)
 
 def logout_view(request):
 	logout(request)
