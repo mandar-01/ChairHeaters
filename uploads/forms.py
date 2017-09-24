@@ -8,5 +8,6 @@ class PostForm(forms.ModelForm):
 		fields = [
 		"title",
 		"description",
+		"content",
 		"docFile",
 		]
