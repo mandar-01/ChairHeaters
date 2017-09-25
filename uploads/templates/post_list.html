@@ -48,10 +48,10 @@ html, body {
                 {% endfor %}
 
                 <!-- Pagination -->
-                <div class="pagination">
+                <div class="pagination" style="margin-bottom: 10px;">
                     <span class="step-links">
                         {% if object_list.has_previous %}
-                            <a href="?page={{ object_list.previous_page_number }}&q={{request.GET.q}}" class="btn btn-primary">previous</a>
+                            <a href="?page={{ object_list.previous_page_number }}&q={{request.GET.q}}" class="btn btn-primary">&larr; previous</a>
                         {% endif %}
 
                         <span class="current">
@@ -59,7 +59,7 @@ html, body {
                         </span>
 
                         {% if object_list.has_next %}
-                            <a href="?page={{ object_list.next_page_number }}&q={{request.GET.q}}" class="btn btn-primary" style="margin-bottom: 15px;">next</a>
+                            <a href="?page={{ object_list.next_page_number }}&q={{request.GET.q}}" class="btn btn-primary">next &rarr;</a>
                         {% endif %}
                     </span>
                 </div>

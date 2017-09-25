@@ -23,11 +23,10 @@ class UserLoginForm(forms.Form):
 		return super(UserLoginForm,self).clean(*args,**kwargs)
 
 class UserRegisterForm(forms.ModelForm):
+	password = forms.CharField(widget=forms.PasswordInput)
 	class Meta:
-		#email2 = forms.EmailField(label='Confirm Email')
-		password = forms.CharField(widget=forms.PasswordInput)
 		model = User
 		fields = [
 		'username',
-		'password'
+		'password',
 		]
