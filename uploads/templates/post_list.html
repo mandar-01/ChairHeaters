@@ -2,15 +2,22 @@
 
 {% block styles %}
 <style type="text/css">
-    #lol {
-        padding-top: 20px; 
-    }
+* {
+    margin: 0;
+}
+html, body {
+    height: 100%;
+}
+
 </style>
 {% endblock %}
 
 {% block content %}
     <!-- Page Content -->
-    <div class="container">
+    <div class="container" style="    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -142px;">
 
         <div class="row">
 
@@ -38,38 +45,20 @@
                 <div class="pagination">
                     <span class="step-links">
                         {% if object_list.has_previous %}
-                            <a href="?page={{ object_list.previous_page_number }}&q={{request.GET.q}}">previous</a>
+                            <a href="?page={{ object_list.previous_page_number }}&q={{request.GET.q}}" class="btn btn-primary">previous</a>
                         {% endif %}
 
                         <span class="current">
-                            Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
+                            Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}
                         </span>
 
                         {% if object_list.has_next %}
-                            <a href="?page={{ object_list.next_page_number }}&q={{request.GET.q}}">next</a>
+                            <a href="?page={{ object_list.next_page_number }}&q={{request.GET.q}}" class="btn btn-primary" style="margin-bottom: 15px;">next</a>
                         {% endif %}
                     </span>
                 </div>
 
             </div>
-
-<!--              Sidebar Widgets Column 
-            <div class="col-md-4">
-
-                 Search Widget 
-                <div class="card my-4">
-                    <h5 class="card-header">Search</h5>
-                    <div class="card-block">
-                        <div class="input-group">
-                            <form method="GET" action="">
-                            <input type="text" class="form-control" name="q" placeholder="Search for...">
-                            <span class="input-group-btn"> 
-                            <input class="btn btn-secondary" type="submit" value="Go!"></input>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             <div class="col-md-4">
                 <h5 class="card-header" id="lol">Search</h5>
                 <div class="card-block">
@@ -82,9 +71,15 @@
 
         </div>
         <!-- /.row -->
-
+    <div style="height: 142px;"></div>
     </div>
     <!-- /.container -->
+    <!-- Footer -->
+    <footer class="py-5 bg-inverse" style="height: 142px;">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; ChairHeaters</p>
+        </div>
+    </footer>
 
 
 {% endblock %}

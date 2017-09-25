@@ -1,14 +1,40 @@
 {% extends "base.html" %}
 
+{% block styles %}
+
+<style type="text/css">
+	#maindiv {
+    border: 1px solid black;
+    padding: 20px 10px; 
+    border-radius: 10px;
+    margin: 10px auto;
+    max-width: 70%;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+	}
+	#divdel {
+		border-top: 1px solid #dcdcdc;
+		text-align: center;
+	}
+</style>
+
+{% endblock %}
+
 {% block content %}
-<h1>{{title}}</h1>
-<p class="content-markdown">{{instance.description}}</p>
-<p class="content-markdown">{{instance.content}}</p>
+<div id="maindiv">
+	<h1>{{title}}</h1>
+	<p class="content-markdown">{{instance.content}}</p>
 
-{% if instance.docFile %}
-<a href="{{instance.docFile.url}}">View attachment</a> 
-{% endif %}
+	{% if instance.docFile %}
+	<a href="{{instance.docFile.url}}">View attachment</a> 
+	{% endif %}
 
-<a href="/uploads/{{instance.id}}/delete/">Delete Post</a>
+	</br></br></br>
+	<div id="divdel">
+	<a href="/uploads/{{instance.id}}/delete/" class="btn btn-primary" style="background-color: #c9302c;border-color: #c9302c;margin-top: 10px;">Delete</a>
+	<a href="#" class="btn btn-primary" style="background-color: 'blue';border-color: 'blue';margin-top: 10px;">Update</a>
+	</div>
 <!-- <div class="fb-comments" data-href="{{request.build_absolute_uri" data-numposts="5"></div> -->
+</div>
+
+
 {% endblock %}
