@@ -8,6 +8,12 @@
 html, body {
     height: 100%;
 }
+#searchdiv {
+    border-top: 1px solid rgba(0,0,0,.125);
+    border-left: 1px solid rgba(0,0,0,.125);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    border-right: 1px solid rgba(0,0,0,.125);
+}
 
 </style>
 {% endblock %}
@@ -59,11 +65,11 @@ html, body {
                 </div>
 
             </div>
-            <div class="col-md-4">
-                <h5 class="card-header" id="lol">Search</h5>
-                <div class="card-block">
+            <div class="col-md-4" style="margin-top: 20px;">
+                <h5 class="card-header" id="searchdiv">Search</h5>
+                <div class="card-block" id="searchdiv">
                     <form method="GET" action="">
-                        <input type="text" name="q" placeholder="Search" value="{{request.GET.q}}">
+                        <input type="text" name="q" placeholder="Search" value="{{request.GET.q}}" style="width: 40%">
                         <input type="submit" value="Go!">
                     </form>
                 </div>

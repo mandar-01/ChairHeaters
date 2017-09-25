@@ -7,7 +7,7 @@ from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 import os
 from django.conf import settings
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 
 
 
@@ -57,7 +57,7 @@ def create_post(request):
 		instance = form.save(commit=False)
 		instance.user = request.user
 		instance.save()
-		#return HttpResponseRedirect(instance.get_absolute_url())
+		return HttpResponseRedirect(instance.get_absolute_url())
 	context = {
 	  "form" : form
 	}
@@ -69,16 +69,23 @@ def delete_post(request,id=None):
 		instance.delete()
 		return redirect('/uploads/list/')
 	else:
-		return render(request,"cantdel.html",{})
+		return render(request,"cantdel.html",{"title" : "delete"})
 
-def update_post(request):
-	form = PostForm(request.POST or None)
-	if form.is_valid():
-		instance = form.save(commit=False)
-		instance.save()
-		#return HttpResponseRedirect(instance.get_absolute_url())
+def update_post(request,id=None):
+	instance = get_object_or_404(upload,id=id)
+	if instance.user == request.user:
+		form = PostForm(request.POST or None,instance=instance)
+		if form.is_valid():
+			instance = form.save(commit=False)
+			instance.save()
+			return HttpResponseRedirect(instance.get_absolute_url())
+	else:
+		return render(request,"cantdel.html",{"title" : "update"})
+
 	context = {
-	  "form" : form
+	  "title" : instance.title,
+	  "form" : form,
+	  "instance" : instance,
 	}
 	return render(request,'form.html',context)
 def my_posts(request):
@@ -107,13 +114,3 @@ def my_posts(request):
 	    queryset = paginator.page(paginator.num_pages)
 	context = {"object_list" : queryset}
 	return render(request,'post_list.html',context)
-
-
-def download(request, path):
-    file_path = os.path.join(settings.MEDIA_ROOT, path)
-    if os.path.exists(file_path):
-        with open(file_path, 'rb') as fh:
-            response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
-            response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
-            return response
-    raise Http404
